@@ -1,3 +1,24 @@
+/* The emerging W3C standard
+   that is currently Firefox-only */
+   * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(70, 78, 87) #343a40;
+  }
+  
+  /* Works on Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #343a40;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(70, 78, 87);
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: #343a40;
+  }
+
 .form-signin {
     margin-top: 35vh;
     width: 100%;
@@ -26,7 +47,7 @@ body {
     background-color: #05c46b;
   }
 
-  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color: #05c46b !important;
     border-color: #05c46b !important;
 }
@@ -39,14 +60,36 @@ body {
     position: fixed;
 }
 
-.friendslist {
+.listview {
     height: calc(100vh - 60px);
     overflow: hidden;
 }
 
-.character-panel {
+.user-panel {
     height: 70px;
     background-color: #2d3238;
+    display: flex;
+}
+
+.user-panel button {
+    height: 40px;
+    margin: 10px;
+    margin-left: 250px;
+    position: fixed;
+}
+
+.user-panel p {
+    margin-top: 17.5px;
+}
+
+.user-panel #name {
+    margin-left: 10px;
+    color: white;
+}
+
+.user-panel #tag {
+    margin-left: 2px;
+    color: grey;
 }
 
 .list {
@@ -54,3 +97,50 @@ body {
     display: block;
     height: calc(100vh - 100px)
 }
+
+.requestslist tr td div p{
+    display: table-cell;
+}
+
+.tag {
+    color: grey;
+    padding-left: 2px;
+}
+
+.menu {
+    width: 120px;
+    z-index: 1;
+    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    display: none;
+    background: rgb(23, 28, 31);
+    border-radius: 5px;
+  }
+  .menu .menu-options {
+    list-style: none;
+    padding: 5px 0;
+    z-index: 1;
+    margin: 0;
+  }
+  .menu .menu-options .menu-option {
+    z-index: 1;
+    font-size: 14px;
+    padding: 10px 40px 10px 20px;
+    cursor: pointer;
+    color: white;
+  }
+  .menu .menu-options .menu-option:hover {
+    background: rgb(161, 161, 161);
+  }
+
+  @keyframes move {
+    from {
+      transform: translate(0%);
+    }
+    50% {
+      transform: translate(-40%);
+    }
+    to {
+      transform: transform(0%);
+    }
+  }
