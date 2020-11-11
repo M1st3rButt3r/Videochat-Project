@@ -143,7 +143,11 @@ function generateBlocksListActionButtons()
 }
 
 function block(id) {
-    console.log('Block '+id)
+    fetch(apiUrl +'block?uuid='+id, {credentials: 'include', method: 'put'}).then((x)=>{
+        console.log('block')
+    }).catch((err)=>{
+        if(err) throw err
+    })
     reloadAllLists()
 }
 
