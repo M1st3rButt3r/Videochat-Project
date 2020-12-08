@@ -21,12 +21,18 @@ async function getUserInfo(uuid) {
 
 }
 
-//calls get user info and sets the panels
-async function loadUserPanel(name, tag) {
+async function loadUserPanels(nameClass, tagClass) {
     getUserInfo().then(data => {
-        name.innerHTML = data.name
-        tag.innerHTML = "#" + data.tag
-    })
+        nameObjects = document.getElementsByClassName(nameClass);
+        for (let i = 0; i < nameObjects.length; i++) {
+            nameObjects[i].innerHTML = data.name;
+        }
+
+        tagObjects = document.getElementsByClassName(tagClass);
+        for (let i = 0; i < tagObjects.length; i++) {
+            tagObjects[i].innerHTML = "#"+data.tag;
+        }
+    });
 }
 
 //get all(of one type request, requested, friends) relations of a user

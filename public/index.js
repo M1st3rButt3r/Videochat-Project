@@ -1,11 +1,9 @@
-var nameHTML = document.getElementById('name');
-var tagHTML = document.getElementById('tag');
 var friendmenu = document.getElementById('friendmenu');
 var requestmenu = document.getElementById('requestmenu');
 var requestButton = document.getElementById('requestbutton');
 var requestInput = document.getElementById('requestinput');
 
-loadUserPanel(nameHTML, tagHTML);
+loadUserPanels("name", "tag");
 reloadAllLists().catch((err)=> {if(err) throw err});
 window.setInterval(function(){
     reloadAllLists().catch((err)=> {if(err) throw err});
