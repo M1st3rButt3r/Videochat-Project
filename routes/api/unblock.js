@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     //parse uuid
     var uuid = url.parse(req.url, true).query.uuid;
     if(!uuid) {
-        res.sendStatus(404)
+        res.header('Access-Control-Allow-Origin', "http://localhost:3000").header('Access-Control-Allow-Credentials', true).sendStatus(404)
         return
     }
     //delete block
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     database.connection.query(sql, (err) => {
         if(err) throw err
                         
-        res.sendStatus(200)
+        res.header('Access-Control-Allow-Origin', "http://localhost:3000").header('Access-Control-Allow-Credentials', true).sendStatus(200)
     })
 })
 

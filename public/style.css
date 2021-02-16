@@ -1,3 +1,8 @@
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #05c46b !important;
+  border-color: #05c46b !important;
+}
+
 /* The emerging W3C standard
    that is currently Firefox-only */
    * {
@@ -47,11 +52,6 @@ body {
     background-color: #05c46b;
   }
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #05c46b !important;
-    border-color: #05c46b !important;
-}
-
 .sidebar {
     background-color: #343a40 !important;
     height: 100%;
@@ -82,12 +82,12 @@ body {
     margin-top: 17.5px;
 }
 
-.user-panel #name {
+.user-panel .name {
     margin-left: 10px;
     color: white;
 }
 
-.user-panel #tag {
+.user-panel .tag {
     margin-left: 2px;
     color: grey;
 }
@@ -143,4 +143,66 @@ body {
     to {
       transform: transform(0%);
     }
-  }
+}
+
+  .friendsinput {
+    width: 245px !important;
+}
+
+  .friendsbutton {
+    display: block;
+    position: fixed;
+    top: 40px;
+    left: 250px;
+}
+
+.settings-nav {
+  width: 20%;
+  display: block;
+}
+
+.modal-content {
+  height: 80%;
+  background-color: #343a40 !important;
+  color: #ffffff;
+}
+
+.modal-close {
+  color: white;
+}
+
+.modal-header {
+  border-bottom: 1px solid #292d31 !important;
+}
+
+.settings-modal {
+  overflow: hidden;
+}
+
+.settings-user-panel {
+  height: 70px;
+  background-color: #2d3238;
+  display: -webkit-box;
+  border-radius: 3px;
+}
+
+.settings-user-panel p {
+  margin-top: 23px;
+  position: relative;
+}
+
+.settings-user-panel button {
+  position: absolute;
+  top:53px;
+  right: 29px;
+}
+
+.settings-user-panel .name {
+  margin-left: 10px;
+  color: white;
+}
+
+.settings-user-panel .tag {
+  margin-left: 2px;
+  color: grey;
+}

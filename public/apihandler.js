@@ -21,12 +21,19 @@ async function getUserInfo(uuid) {
 
 }
 
-//calls get user info and sets the panels
-async function loadUserPanel(name, tag) {
+//every user panel is loaded
+async function loadUserPanels(nameClass, tagClass) {
     getUserInfo().then(data => {
-        name.innerHTML = data.name
-        tag.innerHTML = "#" + data.tag
-    })
+        nameObjects = document.getElementsByClassName(nameClass);
+        for (let i = 0; i < nameObjects.length; i++) {
+            nameObjects[i].innerHTML = data.name;
+        }
+
+        tagObjects = document.getElementsByClassName(tagClass);
+        for (let i = 0; i < tagObjects.length; i++) {
+            tagObjects[i].innerHTML = "#"+data.tag;
+        }
+    });
 }
 
 //get all(of one type request, requested, friends) relations of a user
@@ -86,20 +93,20 @@ async function createTableEntry(id, actionButtonsFunction, menu)
         container.appendChild(tagHTML)
         nameEntry.appendChild(container)
         entry.appendChild(nameEntry)
-        entry.appendChild(actionButtonsFunction())
+        entry.appendChild(actionButtonsFunction(id))
 
         return entry
     })
-
-
-
 }
 
 //returns the action button for the friends list
-function generateFriendsListActionButtons()
+function generateFriendsListActionButtons(id)
 {
     var actionsEntry = document.createElement('td')
     var button = document.createElement('button')
+    button.addEventListener('click', ()=>{
+        call(id);
+    });
     button.innerHTML='<i class="fas fa-phone"></i>'
     actionsEntry.appendChild(button)
 
@@ -107,11 +114,17 @@ function generateFriendsListActionButtons()
 }
 
 //returns the action button for the incoming requests list
-function generateRequestsListActionButtons()
+function generateRequestsListActionButtons(id)
 {
     var actionsEntry = document.createElement('td')
     var acceptButton = document.createElement('button')
     var dismissButton = document.createElement('button')
+    acceptButton.addEventListener('click', ()=> {
+        request(id);
+    });
+    dismissButton.addEventListener('click', ()=> {
+        deleteRelation(id);
+    });
     acceptButton.innerHTML='<i class="fas fa-check"></i>'
     dismissButton.innerHTML='<i class="fas fa-times"></i>'
     actionsEntry.appendChild(acceptButton)
@@ -121,10 +134,14 @@ function generateRequestsListActionButtons()
 }
 
 //returns the action button for the incoming requests list
-function generateRequestedListActionButtons()
+function generateRequestedListActionButtons(id)
 {
     var actionsEntry = document.createElement('td')
     var dismissButton = document.createElement('button')
+    dismissButton.addEventListener('click', ()=>{
+        deleteRelation(id)
+    })
+
     dismissButton.innerHTML='<i class="fas fa-times"></i>'
     actionsEntry.appendChild(dismissButton)
 
@@ -135,16 +152,17 @@ function generateRequestedListActionButtons()
 function generateBlocksListActionButtons(id)
 {
     var actionsEntry = document.createElement('td')
-    var dismissButton = document.createElement('button')
-    dismissButton.addEventListener('click', () =>{
-        
+    var removeButton = document.createElement('button')
+    removeButton.addEventListener('click', () =>{
+        unblock(id);
     })
-    dismissButton.innerHTML='<i class="fas fa-times"></i>'
-    actionsEntry.appendChild(dismissButton)
+    removeButton.innerHTML='<i class="fas fa-times"></i>'
+    actionsEntry.appendChild(removeButton)
 
     return actionsEntry
 }
 
+//calls the api to block someone
 function block(id) {
     fetch(apiUrl +'block?uuid='+id, {credentials: 'include'})
     .then(()=> {
@@ -155,6 +173,7 @@ function block(id) {
     })
 }
 
+//calls the api to ublock someone
 function unblock(id) {
     fetch(apiUrl +'unblock?uuid='+id, {credentials: 'include'})
     .then(()=> {
@@ -165,10 +184,7 @@ function unblock(id) {
     })
 }
 
-function call(id) {
-    console.log('Call '+id)
-}
-
+//removes a Friend or a Friendrequest
 function deleteRelation(id) {
     fetch(apiUrl +'deleteRelation?uuid='+id, {credentials: 'include'})
     .then(()=> {
@@ -179,9 +195,24 @@ function deleteRelation(id) {
     })
 }
 
-function request(id)
-{
-    console.log('Accept Request '+id)
-    reloadAllLists()
+//Requests someone
+function request(id) {
+    fetch(apiUrl +'request?uuid='+id, {credentials: 'include'})
+    .then(()=> {
+        reloadAllLists()
+    })
+    .catch((err)=>{
+        if(err) throw err
+    })
 }
 
+//request someone over his name
+function requestWithName(name, tag) {
+    fetch(apiUrl +'request?name='+name+'&tag='+tag, {credentials: 'include'})
+    .then(()=> {
+        reloadAllLists()
+    })
+    .catch((err)=>{
+        if(err) throw err
+    })
+}
