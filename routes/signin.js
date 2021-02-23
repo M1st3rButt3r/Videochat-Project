@@ -4,16 +4,21 @@ var database = require('../includes/database')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
+//get request
 router.get('/', (req, res) => {
+    //check if you are logged in
     if(req.user)
     {
+        //redirect to main page
         res.redirect('/')
         return 
     }
+    //render sign in
     res.render('signin.ejs')
     return 
 })
 
+//post request (this is called if you hit the sign in button)
 router.post('/', (req, res) => {
     
     //if logged in redirect

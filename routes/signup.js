@@ -5,16 +5,19 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 router.get('/', (req, res) => {
+        //check if you are logged in
     if(req.user)
     {
+        //redirect to main page
         res.redirect('/')
         return 
     }
+    //sign in
     res.render('signup.ejs')
     return 
 })
 
-//handle post requests to directory /signup
+//handle post requests to directory /signup (if you hit the sign up button)
 router.post('/', async (req, res) => {
 
     //if logged in redirect
