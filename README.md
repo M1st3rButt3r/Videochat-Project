@@ -2,6 +2,9 @@
 ## Ziel des Projekts
 Das Ziel des Projektes ist es ein P2P Videochat Tool zu entwickeln, welches ohne jeglichen Speichern von Personenbezogenen Daten auskommt (Serverlog ausgenommen). Dazu wird ein Accountsystem mit anmelden sowie Neuerstellung eines Accounts geschaffen. Diese Accounts sollen sich über ihren Benutzernamen + Tag anfreunden können und so Videotelefonate starten können. Diese sollen über ein Raumsystem funktionieren. Für die Räume bracht man dementsprechend die richtige Berechtigung. Das Raumsystem soll es ermöglichen Später einfacher Gruppen hinzuzufügen, da diese Räume von sich aus mehr Teilnehmer als 2 erlauben. Des Weiteren soll sofern die Zeit bleibt an einer Desktop Version gearbeitet werden, und ein P2P Chat Tool erstellt werden.
 
+##Zukunft
+Es gibt einige Dinge die ich zeitlich nicht mehr geschaft habe, darunter essentielle Sachen aber auch neue Features, dazu zählt zum Beispiel, das der gesamte Code noch sehr "prototype-like" ist, also der Code funktioniert, ist aber nicht optimal geschrieben, und hat auch noch seine Tücken. Außerdem gibt es auch noch viele Errors, die beim werfen zum Stop des Servers führen. Auch der Websocket code steckt noch in app.js obwohl dieser eigentlich separiert gehört, was auch eine Aufgabe der Zukunft gewesen wäre. Des weiteren gibt es noch keinen Video/Sprachchat, allerdings wird eine Verbindung bereits hergestellt. Auch gibt es keine Gruppen /Server Funktion, welche geplant war. 
+
 ## Tagebuch
 
 ### 16.02.21
