@@ -2,6 +2,7 @@ var currentlyCalled = -1;
 var incomingCallId = -1;
 var incomingCallPeerId = -1;
 
+//executed to call someone
 function call(id)
 {
   if(incomingCallPeerId != null && id == incomingCallId)
@@ -18,6 +19,7 @@ function call(id)
 
 }
 
+//executed if you there's an incoming call
 function incomingCall(id, peerid)
 {
     if(currentlyCalled == id)
@@ -31,6 +33,7 @@ function incomingCall(id, peerid)
     }
 }
 
+//connects the two peers
 function connect(peerid)
 {
   var conn = myPeer.connect(peerid);
